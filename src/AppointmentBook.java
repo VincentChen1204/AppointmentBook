@@ -17,17 +17,19 @@ public class AppointmentBook {
                 if (block == duration) {
                     return i - duration + 1;
                 }
-            } else block = 0;
+            }
+            else block = 0;
         }
         return -1;
     }
 
     public boolean makeAppointment(int startPeriod, int endPeriod, int duration) {
-        for(int i = startPeriod; i <= endPeriod; i++)
+        for(int i = startPeriod; i <= endPeriod; i++) {
             int freeBlock = findFreeBlock(i, duration);
-        if (freeBlock > -1) {
-            reserveBlock(i, freeBlock, duration);
-            return true;
+            if (freeBlock > -1) {
+                reserveBlock(i, freeBlock, duration);
+                return true;
+            }
         }
         return false;
     }
