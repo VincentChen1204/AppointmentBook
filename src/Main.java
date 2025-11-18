@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println(read());
@@ -38,9 +43,10 @@ public class Main {
             }
             AppointmentBook a = new AppointmentBook(readSchedule(schedule));
             schedule = "";
+
+            if (a.makeAppointment(s.nextInt(), s.nextInt(), s.nextInt()))
+                meetings++;
         }
-        if (a.makeAppointment(s.nextInt(), s.nextInt(), s.nextInt()))
-            meetings++;
         return meetings;
     }
     public static boolean[][] readSchedule(String lines) {
